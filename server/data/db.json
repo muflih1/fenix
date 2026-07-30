@@ -1,0 +1,442 @@
+{
+  "jobs": [
+    {
+      "id": "JOB-2026-001",
+      "title": "Main Exterior Illuminated Channel Letter Signage",
+      "customerName": "Marcus Vance",
+      "companyName": "Vance & Co Financial",
+      "phone": "+1 (555) 234-8901",
+      "email": "marcus@vanceco.com",
+      "signType": "3D_ACRYLIC_CHANNEL_LETTERS",
+      "dimensions": {
+        "width": 12,
+        "height": 3,
+        "unit": "ft"
+      },
+      "installationType": "OUTDOOR_FACADE",
+      "siteAddress": "450 Commerce Blvd, Suite 100, West Wing",
+      "stage": "PRODUCTION",
+      "productionSubStatus": "LED_WIRING",
+      "priority": "HIGH",
+      "designMockupUrl": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&auto=format&fit=crop&q=80",
+      "assignedTeam": "Crew Alpha - Lead Technican Dave",
+      "estimatedDate": "2026-07-30",
+      "installationDate": "2026-08-02",
+      "notes": "Requires heavy duty rainproof PSU. Mounting on brick facade at height of 14ft.",
+      "bom": [
+        {
+          "inventoryItemId": "INV-LED-001",
+          "name": "Samsung 2835 3-LED Injection Module (White 6500K 1.5W)",
+          "category": "LED_MODULES",
+          "quantity": 240,
+          "unit": "pcs",
+          "unitCost": 0.45,
+          "totalCost": 108
+        },
+        {
+          "inventoryItemId": "INV-PSU-001",
+          "name": "Rainproof 12V 33.3A 400W LED Power Supply",
+          "category": "POWER_SUPPLIES",
+          "quantity": 2,
+          "unit": "pcs",
+          "unitCost": 18.5,
+          "totalCost": 37
+        },
+        {
+          "inventoryItemId": "INV-ACR-001",
+          "name": "Cast Acrylic Sheet 3mm Opal White (4ft x 8ft)",
+          "category": "ACRYLIC_SHEETS",
+          "quantity": 3,
+          "unit": "sheets",
+          "unitCost": 38,
+          "totalCost": 114
+        },
+        {
+          "inventoryItemId": "INV-ALU-001",
+          "name": "Aluminum Channel Profile 80mm Depth Powder Coated Black",
+          "category": "ALUMINUM_PROFILES",
+          "quantity": 18,
+          "unit": "meters",
+          "unitCost": 4.8,
+          "totalCost": 86.4
+        }
+      ],
+      "financials": {
+        "estimatedMaterialCost": 345.4,
+        "laborCost": 450,
+        "overheadCost": 120,
+        "markupPercent": 40,
+        "totalQuoteAmount": 1281.56,
+        "depositPaid": 650,
+        "finalBalancePaid": 0,
+        "paymentStatus": "PARTIAL"
+      },
+      "createdAt": "2026-07-20T09:30:00Z",
+      "updatedAt": "2026-07-26T14:10:00Z"
+    },
+    {
+      "id": "JOB-2026-002",
+      "title": "Vibrant Cyan Custom Neon Flex Bar Wall Sign",
+      "customerName": "Elena Rostova",
+      "companyName": "CyberLounge Nightclub",
+      "phone": "+1 (555) 987-6543",
+      "email": "elena@cyberlounge.bar",
+      "signType": "NEON_FLEX",
+      "dimensions": {
+        "width": 6,
+        "height": 4,
+        "unit": "ft"
+      },
+      "installationType": "INDOOR",
+      "siteAddress": "88 Neon Way, Downtown District",
+      "stage": "INSTALLATION",
+      "priority": "URGENT",
+      "designMockupUrl": "https://images.unsplash.com/photo-1563089145-599997674d42?w=800&auto=format&fit=crop&q=80",
+      "assignedTeam": "Crew Beta - Installer Sam",
+      "estimatedDate": "2026-07-27",
+      "installationDate": "2026-07-27",
+      "notes": "Mounted on 5mm clear acrylic backplate with standoff brass screws.",
+      "bom": [
+        {
+          "inventoryItemId": "INV-LED-002",
+          "name": "Silicone LED Neon Flex 6x12mm 12V (Electric Cyan)",
+          "category": "LED_MODULES",
+          "quantity": 22,
+          "unit": "meters",
+          "unitCost": 3.2,
+          "totalCost": 70.4
+        },
+        {
+          "inventoryItemId": "INV-ACR-002",
+          "name": "Clear Acrylic Sheet 5mm (4ft x 8ft)",
+          "category": "ACRYLIC_SHEETS",
+          "quantity": 1,
+          "unit": "sheets",
+          "unitCost": 52,
+          "totalCost": 52
+        },
+        {
+          "inventoryItemId": "INV-PSU-002",
+          "name": "Ultra-Slim Indoor 12V 8.3A 100W Power Adapter",
+          "category": "POWER_SUPPLIES",
+          "quantity": 1,
+          "unit": "pcs",
+          "unitCost": 8.2,
+          "totalCost": 8.2
+        }
+      ],
+      "financials": {
+        "estimatedMaterialCost": 130.6,
+        "laborCost": 280,
+        "overheadCost": 75,
+        "markupPercent": 45,
+        "totalQuoteAmount": 704.12,
+        "depositPaid": 352.06,
+        "finalBalancePaid": 0,
+        "paymentStatus": "PARTIAL"
+      },
+      "createdAt": "2026-07-22T11:15:00Z",
+      "updatedAt": "2026-07-26T16:00:00Z"
+    },
+    {
+      "id": "JOB-2026-003",
+      "title": "Double-Sided LED Lightbox Menu Board",
+      "customerName": "Chef Ahmed",
+      "companyName": "Falafel & Grill House",
+      "phone": "+1 (555) 444-1234",
+      "email": "orders@falafelhouse.com",
+      "signType": "LED_LIGHTBOX",
+      "dimensions": {
+        "width": 8,
+        "height": 2.5,
+        "unit": "ft"
+      },
+      "installationType": "INDOOR",
+      "siteAddress": "124 Food Court Street, Mall Galleria",
+      "stage": "QUOTATION",
+      "priority": "NORMAL",
+      "notes": "Requires edge-lit high intensity LEDs and snap-frame profile for easy menu graphics update.",
+      "bom": [
+        {
+          "inventoryItemId": "INV-LED-001",
+          "name": "Samsung 2835 3-LED Injection Module (White 6500K 1.5W)",
+          "category": "LED_MODULES",
+          "quantity": 120,
+          "unit": "pcs",
+          "unitCost": 0.45,
+          "totalCost": 54
+        },
+        {
+          "inventoryItemId": "INV-PSU-002",
+          "name": "Ultra-Slim Indoor 12V 8.3A 100W Power Adapter",
+          "category": "POWER_SUPPLIES",
+          "quantity": 1,
+          "unit": "pcs",
+          "unitCost": 8.2,
+          "totalCost": 8.2
+        }
+      ],
+      "financials": {
+        "estimatedMaterialCost": 180,
+        "laborCost": 220,
+        "overheadCost": 50,
+        "markupPercent": 35,
+        "totalQuoteAmount": 607.5,
+        "depositPaid": 0,
+        "finalBalancePaid": 0,
+        "paymentStatus": "PENDING_DEPOSIT"
+      },
+      "createdAt": "2026-07-24T15:00:00Z",
+      "updatedAt": "2026-07-25T10:20:00Z"
+    },
+    {
+      "id": "JOB-2026-004",
+      "title": "Highway Entrance Pylon Sign Board (P10 LED Matrix)",
+      "customerName": "Sarah Jenkins",
+      "companyName": "Apex Logistics Hub",
+      "phone": "+1 (555) 777-8899",
+      "email": "s.jenkins@apexlogistics.io",
+      "signType": "PYLON_SIGN",
+      "dimensions": {
+        "width": 10,
+        "height": 20,
+        "unit": "ft"
+      },
+      "installationType": "PYLON_GROUND",
+      "siteAddress": "Highway 101, Exit 24 Freight Gateway",
+      "stage": "QUOTATION",
+      "priority": "HIGH",
+      "notes": "Heavy engineering structural steel frame & double-sided programmable P10 outdoor RGB LED modules.",
+      "bom": [],
+      "financials": {
+        "estimatedMaterialCost": 2800,
+        "laborCost": 1800,
+        "overheadCost": 600,
+        "markupPercent": 35,
+        "totalQuoteAmount": 7020,
+        "depositPaid": 0,
+        "finalBalancePaid": 0,
+        "paymentStatus": "PENDING_DEPOSIT"
+      },
+      "createdAt": "2026-07-26T08:00:00Z",
+      "updatedAt": "2026-07-26T11:13:11.787Z"
+    },
+    {
+      "id": "JOB-2026-005",
+      "title": "Storefront Acrylic 3D Frontlit Logo Sign",
+      "customerName": "Dr. Evelyn Reed",
+      "companyName": "Radiant Dental Clinic",
+      "phone": "+1 (555) 333-2211",
+      "email": "evelyn@radiantdental.care",
+      "signType": "3D_ACRYLIC_CHANNEL_LETTERS",
+      "dimensions": {
+        "width": 10,
+        "height": 3,
+        "unit": "ft"
+      },
+      "installationType": "OUTDOOR_FACADE",
+      "siteAddress": "90 Medical Park Drive, Building B",
+      "stage": "COMPLETED",
+      "priority": "NORMAL",
+      "assignedTeam": "Crew Alpha - Lead Technican Dave",
+      "estimatedDate": "2026-07-20",
+      "installationDate": "2026-07-21",
+      "notes": "Job completed and signed off. 2 year warranty certificate issued.",
+      "bom": [
+        {
+          "inventoryItemId": "INV-LED-001",
+          "name": "Samsung 2835 3-LED Injection Module (White 6500K 1.5W)",
+          "category": "LED_MODULES",
+          "quantity": 180,
+          "unit": "pcs",
+          "unitCost": 0.45,
+          "totalCost": 81
+        },
+        {
+          "inventoryItemId": "INV-PSU-001",
+          "name": "Rainproof 12V 33.3A 400W LED Power Supply",
+          "category": "POWER_SUPPLIES",
+          "quantity": 1,
+          "unit": "pcs",
+          "unitCost": 18.5,
+          "totalCost": 18.5
+        }
+      ],
+      "financials": {
+        "estimatedMaterialCost": 210,
+        "laborCost": 350,
+        "overheadCost": 80,
+        "markupPercent": 40,
+        "totalQuoteAmount": 896,
+        "depositPaid": 448,
+        "finalBalancePaid": 448,
+        "paymentStatus": "PAID_IN_FULL"
+      },
+      "createdAt": "2026-07-10T10:00:00Z",
+      "updatedAt": "2026-07-21T17:30:00Z"
+    }
+  ],
+  "inventory": [
+    {
+      "id": "INV-LED-001",
+      "sku": "LED-MOD-3W-W",
+      "name": "Samsung 2835 3-LED Injection Module (White 6500K 1.5W)",
+      "category": "LED_MODULES",
+      "stockQuantity": 1250,
+      "minReorderLevel": 300,
+      "unit": "pcs",
+      "unitCostPrice": 0.45,
+      "sellingPrice": 0.85,
+      "supplier": "LumiTech Wholesale Opto",
+      "binLocation": "Bin A-12",
+      "updatedAt": "2026-07-26T10:57:34.657Z"
+    },
+    {
+      "id": "INV-LED-002",
+      "sku": "NEON-FLEX-12V-CYAN",
+      "name": "Silicone LED Neon Flex 6x12mm 12V (Electric Cyan)",
+      "category": "LED_MODULES",
+      "stockQuantity": 180,
+      "minReorderLevel": 50,
+      "unit": "meters",
+      "unitCostPrice": 3.2,
+      "sellingPrice": 6.5,
+      "supplier": "FlexiNeon Co",
+      "binLocation": "Rack R-02",
+      "updatedAt": "2026-07-26T10:57:34.658Z"
+    },
+    {
+      "id": "INV-LED-003",
+      "sku": "NEON-FLEX-12V-MAGENTA",
+      "name": "Silicone LED Neon Flex 6x12mm 12V (Vibrant Magenta)",
+      "category": "LED_MODULES",
+      "stockQuantity": 45,
+      "minReorderLevel": 50,
+      "unit": "meters",
+      "unitCostPrice": 3.2,
+      "sellingPrice": 6.5,
+      "supplier": "FlexiNeon Co",
+      "binLocation": "Rack R-02",
+      "updatedAt": "2026-07-26T10:57:34.658Z"
+    },
+    {
+      "id": "INV-PSU-001",
+      "sku": "PSU-12V-400W-OUT",
+      "name": "Rainproof 12V 33.3A 400W LED Power Supply",
+      "category": "POWER_SUPPLIES",
+      "stockQuantity": 28,
+      "minReorderLevel": 10,
+      "unit": "pcs",
+      "unitCostPrice": 18.5,
+      "sellingPrice": 35,
+      "supplier": "MeanWell Direct",
+      "binLocation": "Shelf P-01",
+      "updatedAt": "2026-07-26T10:57:34.658Z"
+    },
+    {
+      "id": "INV-PSU-002",
+      "sku": "PSU-12V-100W-SLIM",
+      "name": "Ultra-Slim Indoor 12V 8.3A 100W Power Adapter",
+      "category": "POWER_SUPPLIES",
+      "stockQuantity": 8,
+      "minReorderLevel": 15,
+      "unit": "pcs",
+      "unitCostPrice": 8.2,
+      "sellingPrice": 18,
+      "supplier": "MeanWell Direct",
+      "binLocation": "Shelf P-02",
+      "updatedAt": "2026-07-26T10:57:34.658Z"
+    },
+    {
+      "id": "INV-ACR-001",
+      "sku": "ACR-3MM-W401",
+      "name": "Cast Acrylic Sheet 3mm Opal White (4ft x 8ft)",
+      "category": "ACRYLIC_SHEETS",
+      "stockQuantity": 42,
+      "minReorderLevel": 10,
+      "unit": "sheets",
+      "unitCostPrice": 38,
+      "sellingPrice": 65,
+      "supplier": "PlastiCraft Supplies",
+      "binLocation": "Bay C-01",
+      "updatedAt": "2026-07-26T10:57:34.658Z"
+    },
+    {
+      "id": "INV-ACR-002",
+      "sku": "ACR-5MM-CLR",
+      "name": "Clear Acrylic Sheet 5mm (4ft x 8ft)",
+      "category": "ACRYLIC_SHEETS",
+      "stockQuantity": 19,
+      "minReorderLevel": 8,
+      "unit": "sheets",
+      "unitCostPrice": 52,
+      "sellingPrice": 90,
+      "supplier": "PlastiCraft Supplies",
+      "binLocation": "Bay C-02",
+      "updatedAt": "2026-07-26T10:57:34.658Z"
+    },
+    {
+      "id": "INV-ALU-001",
+      "sku": "ALU-CHAN-80MM-BLK",
+      "name": "Aluminum Channel Profile 80mm Depth Powder Coated Black",
+      "category": "ALUMINUM_PROFILES",
+      "stockQuantity": 65,
+      "minReorderLevel": 20,
+      "unit": "meters",
+      "unitCostPrice": 4.8,
+      "sellingPrice": 9.5,
+      "supplier": "Apex Metals Profile",
+      "binLocation": "Rack M-05",
+      "updatedAt": "2026-07-26T10:57:34.658Z"
+    },
+    {
+      "id": "INV-VNY-001",
+      "sku": "VNY-ORACAL-651-BLK",
+      "name": "Oracal 651 Intermediate Vinyl Gloss Black (24in x 50yd)",
+      "category": "VINYL_FLEX",
+      "stockQuantity": 12,
+      "minReorderLevel": 3,
+      "unit": "rolls",
+      "unitCostPrice": 65,
+      "sellingPrice": 110,
+      "supplier": "GraphicSupply Pro",
+      "binLocation": "Roll Rack 1",
+      "updatedAt": "2026-07-26T10:57:34.658Z"
+    },
+    {
+      "id": "INV-CTL-001",
+      "sku": "CTL-RGB-RF-12V",
+      "name": "RF Wireless 12-24V Dimmer Controller with Remote",
+      "category": "CONTROLLERS",
+      "stockQuantity": 35,
+      "minReorderLevel": 10,
+      "unit": "pcs",
+      "unitCostPrice": 6.5,
+      "sellingPrice": 15,
+      "supplier": "LumiTech Wholesale Opto",
+      "binLocation": "Shelf E-03",
+      "updatedAt": "2026-07-26T10:57:34.658Z"
+    }
+  ],
+  "stockLogs": [
+    {
+      "id": "LOG-101",
+      "inventoryItemId": "INV-LED-001",
+      "itemName": "Samsung 2835 3-LED Injection Module (White 6500K 1.5W)",
+      "type": "INWARD_PURCHASE",
+      "quantityChanged": 1000,
+      "notes": "Initial inventory stock purchase batch #440",
+      "timestamp": "2026-07-26T10:57:34.659Z"
+    },
+    {
+      "id": "LOG-102",
+      "inventoryItemId": "INV-LED-001",
+      "itemName": "Samsung 2835 3-LED Injection Module (White 6500K 1.5W)",
+      "type": "OUTWARD_JOB_CONSUMPTION",
+      "quantityChanged": -240,
+      "jobId": "JOB-2026-001",
+      "notes": "Deducted for Vance & Co Channel Letters production",
+      "timestamp": "2026-07-25T14:00:00Z"
+    }
+  ]
+}

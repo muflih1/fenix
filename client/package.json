@@ -1,0 +1,42 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.5.7",
+    "@tanstack/react-query": "^5.60.0",
+    "@tanstack/react-router": "^1.95.0",
+    "@trpc/client": "next",
+    "@trpc/react-query": "next",
+    "better-auth": "^1.6.25",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.475.0",
+    "react": "19.3.0-canary-28cd4bb0-20260723",
+    "react-aria-components": "^1.19.0",
+    "react-dom": "19.3.0-canary-28cd4bb0-20260723",
+    "react-hook-form": "^7.83.0",
+    "recharts": "^3.10.1",
+    "scheduler": "0.28.0-canary-28cd4bb0-20260723",
+    "tailwind-animations": "^1.0.2",
+    "tailwind-merge": "^3.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@tanstack/router-plugin": "^1.95.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/scheduler": "^0.26.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0"
+  }
+}

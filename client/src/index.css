@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+@import 'tailwind-animations';
+
+@theme {
+  --font-heading: 'Outfit', sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+  }
+
+  html.dark body {
+    background-color: #09090b;
+    color: #fafafa;
+  }
+}
