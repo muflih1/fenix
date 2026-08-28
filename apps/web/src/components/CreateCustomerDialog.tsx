@@ -4,6 +4,20 @@ import {Dialog, DialogHeader} from './Dialog';
 import {HookFormTextInputField} from './HookFormTextInputField';
 import {useTRPC} from '../utils/trpc';
 import {useMutation} from '@tanstack/react-query';
+import z from 'zod';
+import {zodResolver} from '@hookform/resolvers/zod';
+
+const schema = z.object({
+  name: z.string().nonempty(),
+  phone: z.string().nonempty().min(10),
+  email: z
+    .string()
+    .transform(value => (value === '' ? undefined : value))
+    .pipe(z.email().optional()),
+  companyName: z.string().optional(),
+});
+
+type CreateCustomerFormData = z.infer<typeof schema>;
 
 export function CreateCustomerDialog({
   onClose,
@@ -12,13 +26,14 @@ export function CreateCustomerDialog({
   onClose(): void;
   onSuccess?: () => void;
 }) {
-  const form = useForm({
+  const form = useForm<CreateCustomerFormData>({
     defaultValues: {
       name: '',
       phone: '',
       email: '',
       companyName: '',
     },
+    resolver: zodResolver(schema),
   });
   const trpc = useTRPC();
   const {mutate: createCustomerSync} = useMutation(
@@ -41,7 +56,11 @@ export function CreateCustomerDialog({
           })}
           className='space-y-3 p-4 flex flex-col'
         >
-          <HookFormTextInputField control={form.control} name='name' label='Name' />
+          <HookFormTextInputField
+            control={form.control}
+            name='name'
+            label='Name'
+          />
           <HookFormTextInputField
             control={form.control}
             name='phone'

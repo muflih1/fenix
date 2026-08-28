@@ -16,7 +16,7 @@
   --primary-foreground: #ffffff;
   --animation-move-in: cubic-bezier(0.17, 0.17, 0, 1);
   --animation-move-out: cubic-bezier(0.17, 0.17, 0, 1);
-  --focus-ring-shadow-default: 0 0 0 2px #fff, 0 0 0 4px #065fd4;
+  --focus-ring-shadow-default: 0 0 0 2px #fff, 0 0 0 4px #1877f9;
   --input-corner-radius: 6px;
   --negative: #dd2334;
   --toast-surface: #ffffff;

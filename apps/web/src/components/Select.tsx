@@ -1,3 +1,4 @@
+import type {ReactNode} from 'react';
 import {IconCaretDownFilled, IconCheckFilled} from '@tabler/icons-react';
 import {
   Button as AriaButton,
@@ -20,7 +21,7 @@ import {
   // Collection,
   // type ListBoxSectionProps,
 } from 'react-aria-components';
-import {cn, composeTailwindRenderProps} from '../lib/utils';
+import {composeTailwindRenderProps} from '../lib/utils';
 import {tv} from 'tailwind-variants';
 
 export interface SelectProps<T, M extends 'single' | 'multiple'> extends Omit<
@@ -28,12 +29,16 @@ export interface SelectProps<T, M extends 'single' | 'multiple'> extends Omit<
   'children'
 > {
   items?: Iterable<T>;
-  children: React.ReactNode | ((item: T) => React.ReactNode);
+  children: ReactNode | ((item: T) => ReactNode);
+  addOnStart?: ReactNode;
+  addOnEnd?: ReactNode;
 }
 
 export function Select<T, M extends 'single' | 'multiple' = 'single'>({
   children,
   items,
+  addOnStart,
+  addOnEnd,
   ...props
 }: SelectProps<T, M>) {
   return (
@@ -54,13 +59,18 @@ export function Select<T, M extends 'single' | 'multiple' = 'single'>({
           className='text-secondary-foreground'
         />
       </AriaButton>
-      <AriaPopover offset={4} className='bg-white shadow-[0_12px_16px_-4px_rgb(10_10_10_/.10)] rounded-2xl border border-black/10 text-neutral-700 outline-0 overflow-y-auto flex flex-col duration-200 origin-top-left data-entering:-translate-y-2 data-entering:opacity-0 data-entering:scale-95 data-entering:duration-200 data-entering:ease-out data-exiting:-translate-y-2 data-exiting:scale-95 data-exiting:opacity-0 data-exiting:duration-200 data-exiting:ease-in min-w-(--trigger-width)'>
+      <AriaPopover
+        offset={4}
+        className='bg-white shadow-[0_12px_16px_-4px_rgb(10_10_10_/.10)] rounded-2xl border border-black/10 text-neutral-700 outline-0 overflow-y-auto flex flex-col duration-200 origin-top-left data-entering:-translate-y-2 data-entering:opacity-0 data-entering:scale-95 data-entering:duration-200 data-entering:ease-out data-exiting:-translate-y-2 data-exiting:scale-95 data-exiting:opacity-0 data-exiting:duration-200 data-exiting:ease-in min-w-(--trigger-width)'
+      >
+        {addOnStart != null && addOnStart}
         <ListBox
           items={items}
-          className='outline-hidden box-border p-1 max-h-[inherit] overflow-auto'
+          className='outline-hidden box-border p-1 max-h-[inherit] flex flex-col overflow-auto min-h-0'
         >
           {children}
         </ListBox>
+        {addOnEnd != null && addOnEnd}
       </AriaPopover>
     </AriaSelect>
   );
@@ -90,38 +100,38 @@ function ListBox<T>({
   );
 }
 
-const itemStyles = tv({
-  base: 'group relative flex items-center gap-8 cursor-default select-none py-1.5 px-2.5 rounded-md will-change-transform text-sm forced-color-adjust-none',
-  variants: {
-    isFocusVisible: {
-      true: 'shadow-(--focus-ring-shadow-default)',
-    },
-    isSelected: {
-      false:
-        'text-neutral-700 hover:bg-neutral-100 pressed:bg-neutral-100 -outline-offset-2',
-      true: 'bg-blue-600 text-white forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] [&:has(+[data-selected])]:rounded-b-none [&+[data-selected]]:rounded-t-none -outline-offset-4 outline-white forced-colors:outline-[HighlightText]',
-    },
-    isDisabled: {
-      true: 'text-neutral-300 forced-colors:text-[GrayText]',
-    },
-  },
-});
+// const itemStyles = tv({
+//   base: 'group relative flex items-center gap-8 cursor-default select-none py-1.5 px-2.5 rounded-md will-change-transform text-sm forced-color-adjust-none',
+//   variants: {
+//     isFocusVisible: {
+//       true: 'shadow-(--focus-ring-shadow-default)',
+//     },
+//     isSelected: {
+//       false:
+//         'text-neutral-700 hover:bg-neutral-100 pressed:bg-neutral-100 -outline-offset-2',
+//       true: 'bg-blue-600 text-white forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] [&:has(+[data-selected])]:rounded-b-none [&+[data-selected]]:rounded-t-none -outline-offset-4 outline-white forced-colors:outline-[HighlightText]',
+//     },
+//     isDisabled: {
+//       true: 'text-neutral-300 forced-colors:text-[GrayText]',
+//     },
+//   },
+// });
 
-function ListBoxItem(props: ListBoxItemProps) {
-  const textValue =
-    props.textValue ||
-    (typeof props.children === 'string' ? props.children : undefined);
-  return (
-    <AriaListBoxItem {...props} textValue={textValue} className={itemStyles}>
-      {composeRenderProps(props.children, children => (
-        <>
-          {children}
-          <div className='absolute left-4 right-4 bottom-0 h-px bg-white/20 forced-colors:bg-[HighlightText] hidden [.group[data-selected]:has(+[data-selected])_&]:block' />
-        </>
-      ))}
-    </AriaListBoxItem>
-  );
-}
+// function ListBoxItem(props: ListBoxItemProps) {
+//   const textValue =
+//     props.textValue ||
+//     (typeof props.children === 'string' ? props.children : undefined);
+//   return (
+//     <AriaListBoxItem {...props} textValue={textValue} className={itemStyles}>
+//       {composeRenderProps(props.children, children => (
+//         <>
+//           {children}
+//           <div className='absolute left-4 right-4 bottom-0 h-px bg-white/20 forced-colors:bg-[HighlightText] hidden [.group[data-selected]:has(+[data-selected])_&]:block' />
+//         </>
+//       ))}
+//     </AriaListBoxItem>
+//   );
+// }
 
 const dropdownItemStyles = tv({
   base: 'group/dropdown-item flex items-center gap-4 cursor-default select-none py-1.5 pl-2 pr-3 selected:pr-1 rounded-xl outline outline-0 text-sm forced-color-adjust-none no-underline [&[href]]:cursor-pointer [-webkit-tap-highlight-color:transparent]',
