@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-negative: var(--negative);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+}
+
+:root {
+  --always-white: #ffffff;
+  --primary: #0f0f0f;
+  --secondary-foreground: #65676b;
+  --primary-foreground: #ffffff;
+  --animation-move-in: cubic-bezier(0.17, 0.17, 0, 1);
+  --animation-move-out: cubic-bezier(0.17, 0.17, 0, 1);
+  --focus-ring-shadow-default: 0 0 0 2px #fff, 0 0 0 4px #065fd4;
+  --input-corner-radius: 6px;
+  --negative: #dd2334;
+  --toast-surface: #ffffff;
+  --toast-corner-radius: 8px;
+  --toast-container-min-width: 288px;
+  --toast-container-max-width: 328px;
+  --secondary-button-surface: #e4e6ed;
+  --secondary-button-foreground: #0f0f0f;
+  --warning: #af8f00;
+  --popover-background: #ffffff;
+  --popover-foreground: #0f0f0f;
+  --muted: lab(96.52% -0.0000298023 0.0000119209);
+  --muted-foreground: lab(48.496% 0 0);
+}
+
+::view-transition-new(.toast):only-child {
+  animation: slide-in 200ms;
+}
+
+::view-transition-old(.toast):only-child {
+  animation: slide-out 200ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-out {
+  to {
+    transform: translateX(-100px) scale(0.95);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100px) scale(0.95);
+    opacity: 0;
+  }
+}
