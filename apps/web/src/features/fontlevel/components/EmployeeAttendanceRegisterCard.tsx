@@ -24,20 +24,18 @@ export function EmployeeAttendanceRegisterCard() {
           Array(2)
             .fill('')
             .map((_, i) => (
-              <li key={i}>
+              <li key={i} className='group/item'>
                 <div className='group-last/item:border-b-0 border-b border-b-(--divider) flex items-center justify-center py-3.5'>
-                  <div className='flex flex-col shrink grow min-w-0 space-y-1'>
-                    <Skeleton className='h-5 w-30' />
-                    <Skeleton className='h-4 w-38' />
-                    <div className='flex items-center space-x-1'>
-                      <Skeleton className='size-4 rounded-md' />
-                      <Skeleton className='h-4 w-34' />
+                  <div className='flex flex-row items-center shrink grow min-w-0 space-y-0.75'>
+                    <Skeleton className='me-2 size-9 rounded-full' />
+                    <div className='flex flex-col space-y-1'>
+                      <Skeleton className='h-6 w-30' />
+                      <Skeleton className='h-4 w-25' />
                     </div>
-                    <Skeleton className='h-4 w-28' />
                   </div>
                   <div className='shrink-0 ml-4 flex items-center self-stretch space-x-1'>
-                    <Skeleton className='h-9 w-28 rounded-full' />
-                    <Skeleton className='h-9 w-20 rounded-full' />
+                    <Skeleton className='h-8 w-18 rounded-3xl' />
+                    <Skeleton className='h-8 w-18 rounded-3xl' />
                   </div>
                 </div>
               </li>
