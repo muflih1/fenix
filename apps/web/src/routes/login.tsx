@@ -1,6 +1,6 @@
 import {createFileRoute} from '@tanstack/react-router';
 import {useForm} from 'react-hook-form';
-import {HookFormTextInputField} from '../components/HookFormTextInputField';
+import {FormTextInputField} from '../components/FormTextInputField';
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {Button} from '../components/Button';
@@ -44,14 +44,15 @@ function LoginPage() {
           })}
           className='space-y-1.5'
         >
-          <HookFormTextInputField
+          <FormTextInputField
+            autoFocus
             disabled={isPending}
             control={form.control}
             name='email'
             label='Email'
             type='email'
           />
-          <HookFormTextInputField
+          <FormTextInputField
             disabled={isPending}
             control={form.control}
             name='password'

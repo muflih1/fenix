@@ -1,25 +1,27 @@
 import {type FieldPath, type FieldValues} from 'react-hook-form';
 import {
-  HookFormFieldWrapper,
-  type HookFormFieldWrapperPropsWithoutChildren,
-} from './HookFormFieldWrapper';
+  FormFieldWrapper,
+  type FormFieldWrapperPropsWithoutChildren,
+} from './FormFieldWrapper';
 import {Select, type SelectProps} from './Select';
 
-interface HookFormSelectFieldProps<
+interface FormSelectFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  T = unknown,
-  M extends 'single' | 'multiple' = 'single',
+  Value = unknown,
+  Multiple extends boolean | undefined = false,
 >
   extends
-    HookFormFieldWrapperPropsWithoutChildren<TFieldValues, TName>,
-    Omit<SelectProps<T, M>, 'defaultValue' | 'name'> {}
+    FormFieldWrapperPropsWithoutChildren<TFieldValues, TName>,
+    Omit<SelectProps<Value, Multiple>, 'defaultValue' | 'name'> {
+  autoFocus?: boolean;
+}
 
-export function HookFormSelectField<
+export function FormSelectField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  T = unknown,
-  M extends 'single' | 'multiple' = 'single',
+  Value = unknown,
+  Multiple extends boolean | undefined = false,
 >({
   control,
   name,
@@ -27,10 +29,11 @@ export function HookFormSelectField<
   defaultValue,
   label,
   children,
+  autoFocus,
   ...selectProps
-}: HookFormSelectFieldProps<TFieldValues, TName, T, M>) {
+}: FormSelectFieldProps<TFieldValues, TName, Value, Multiple>) {
   return (
-    <HookFormFieldWrapper
+    <FormFieldWrapper
       label={label}
       disabled={disabled}
       defaultValue={defaultValue}
@@ -39,11 +42,13 @@ export function HookFormSelectField<
     >
       {({id, errorId, field, fieldState}) => (
         <Select
+          autoFocus={autoFocus}
           id={id}
-          className='w-full aria-invalid:border-negative aria-invalid:data-focused:shadow-[0_0_0_2px_var(--always-white),0_0_0_4px_var(--negative)]'
+          triggerClassName='w-full aria-invalid:border-negative aria-invalid:focus:shadow-[0_0_0_2px_var(--always-white),0_0_0_4px_var(--negative)]'
           aria-labelledby={id}
-          {...selectProps}
           {...field}
+          onValueChange={field.onChange}
+          {...selectProps}
           {...(fieldState.invalid &&
             fieldState.error?.message != null && {
               'aria-invalid': true,
@@ -53,6 +58,6 @@ export function HookFormSelectField<
           {children}
         </Select>
       )}
-    </HookFormFieldWrapper>
+    </FormFieldWrapper>
   );
 }

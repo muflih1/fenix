@@ -9,7 +9,7 @@ import {
   type UseFormStateReturn,
 } from 'react-hook-form';
 
-export type HookFormFieldWrapperRenderProps = <
+export type FormFieldWrapperRenderProps = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(props: {
@@ -20,12 +20,12 @@ export type HookFormFieldWrapperRenderProps = <
   formState: UseFormStateReturn<TFieldValues>;
 }) => ReactNode;
 
-export type HookFormFieldWrapperPropsWithoutChildren<
+export type FormFieldWrapperPropsWithoutChildren<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> = Omit<HookFormFieldWrapperProps<TFieldValues, TName>, 'children'>;
+> = Omit<FormFieldWrapperProps<TFieldValues, TName>, 'children'>;
 
-export type HookFormFieldWrapperProps<
+export type FormFieldWrapperProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = Pick<
@@ -33,10 +33,10 @@ export type HookFormFieldWrapperProps<
   'control' | 'name' | 'defaultValue' | 'disabled'
 > & {
   label: string;
-  children: HookFormFieldWrapperRenderProps;
+  children: FormFieldWrapperRenderProps;
 };
 
-export function HookFormFieldWrapper<
+export function FormFieldWrapper<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
@@ -46,7 +46,7 @@ export function HookFormFieldWrapper<
   defaultValue,
   label,
   children,
-}: HookFormFieldWrapperProps<TFieldValues, TName>) {
+}: FormFieldWrapperProps<TFieldValues, TName>) {
   const id = useId();
   const errorId = useId();
 

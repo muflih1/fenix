@@ -11,3 +11,7 @@ export async function createCustomer(
   if (customer == null) return null;
   return customer;
 }
+
+export function getCustomers() {
+  return db.select().from(customersTable);
+}

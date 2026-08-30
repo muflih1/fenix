@@ -1,85 +1,101 @@
-import {
-  DialogTrigger,
-  Modal,
-  ModalOverlay,
-  type ModalOverlayProps,
-  Dialog as AriaDialog,
-  Heading,
-  type DialogProps,
-} from 'react-aria-components';
-import {cn, composeTailwindRenderProps} from '../lib/utils';
-import type React from 'react';
+import {Dialog as BaseDialog} from '@base-ui/react/dialog';
+import {cn, composeRenderProps} from '../lib/utils';
 import {Button} from './Button';
-import {IconXFilled} from '@tabler/icons-react';
+import {IconXFilled, type ReactNode} from '@tabler/icons-react';
 
-function DialogOverlay({className, ...props}: ModalOverlayProps) {
-  return (
-    <ModalOverlay
-      className={composeTailwindRenderProps(
-        className,
-        cn(
-          'absolute top-0 left-0 w-full h-(--page-height) bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs',
-          'data-entering:opacity-0 data-exiting:opacity-0',
-        ),
-      )}
-      {...props}
-    />
-  );
+export function DialogRoot(props: BaseDialog.Root.Props) {
+  return <BaseDialog.Root {...props} />;
 }
 
-function Dialog({
-  children,
+export function DialogTrigger(props: BaseDialog.Trigger.Props) {
+  return <BaseDialog.Trigger {...props} />;
+}
+
+export function Dialog({
   className,
-  isDismissable = true,
+  children,
   ...props
-}: Omit<ModalOverlayProps, 'children'> &
-  Pick<React.ComponentProps<typeof Modal>, 'isDismissable'> &
-  Pick<DialogProps, 'children'>) {
+}: BaseDialog.Popup.Props) {
   return (
-    <DialogOverlay isDismissable={isDismissable} {...props}>
-      <div className='sticky top-0 left-0 w-full h-(--visual-viewport-height) flex items-start justify-center box-border'>
-        <Modal
-          className={composeTailwindRenderProps(
-            className,
-            'flex flex-col w-full max-w-[min(90vw,548px)] max-h-[calc(var(--visual-viewport-height)*0.9)] rounded-b-xl bg-(--popover-background) outline-none data-entering:-translate-y-full data-exiting:-translate-y-full duration-300 ease-out transition-transform',
+    <BaseDialog.Portal>
+      <BaseDialog.Backdrop className='fixed inset-0 isolate z-50 bg-black/10 duration-100 motion-reduce:duration-1 supports-backdrop-filter:backdrop-blur-xs data-starting-style:opacity-0 data-ending-style:opacity-0' />
+      <div className='fixed inset-0 z-50 flex min-h-screen flex-col items-center justify-start'>
+        <BaseDialog.Popup
+          className={composeRenderProps(className, className =>
+            cn(
+              'flex flex-col top-[calc(0.25rem*var(--nested-dialogs))] scale-[calc(1-0.1*var(--nested-dialogs))] w-full max-w-[min(90vw,548px)] max-h-[90vh] rounded-b-xl bg-(--popover-background) outline-none duration-500 motion-reduce:duration-1 data-starting-style:opacity-0 data-starting-style:-translate-y-full data-ending-style:opacity-0 data-ending-style:-translate-y-full',
+              className,
+            ),
           )}
+          {...props}
         >
-          <AriaDialog className='flex min-h-0 flex-col outline-none'>
-            {children}
-          </AriaDialog>
-        </Modal>
+          {children}
+        </BaseDialog.Popup>
       </div>
-    </DialogOverlay>
+    </BaseDialog.Portal>
   );
 }
 
-function DialogHeader({
-  title,
+export function DialogHeader({
+  text,
   withCloseButton = true,
 }: {
-  title: string;
+  text?: string;
   withCloseButton?: boolean;
 }) {
   return (
     <div className='flex h-14 items-center w-full justify-between border-b border-solid border-b-gray-300 shrink-0 min-h-0'>
       <div className='flex grow shrink items-center justify-start ms-4'>
-        <Heading slot='title' className='text-lg font-bold'>
-          {title}
-        </Heading>
+        {text != null && (
+          <BaseDialog.Title className='text-lg font-bold'>
+            {text}
+          </BaseDialog.Title>
+        )}
       </div>
       <div className='size-9 mx-4'>
         {withCloseButton && (
-          <Button size='icon' slot='close' variant='ghost'>
-            <IconXFilled size={20} />
-          </Button>
+          <BaseDialog.Close
+            render={
+              <Button size='icon' variant='ghost'>
+                <IconXFilled size={20} />
+              </Button>
+            }
+          />
         )}
       </div>
     </div>
   );
 }
 
-// function DialogBody() {
-//   return
-// }
+export function DialogClose(props: BaseDialog.Close.Props) {
+  return <BaseDialog.Close {...props} />;
+}
 
-export {DialogTrigger, DialogOverlay, Dialog, Heading, DialogHeader};
+interface DialogConfirmationFooterProps {
+  primary: Button.Props & {label?: ReactNode};
+  secondary: Button.Props & {label?: ReactNode};
+}
+
+export function DialogConfirmationFooter({
+  secondary,
+  primary,
+}: DialogConfirmationFooterProps) {
+  return (
+    <div className='p-4 flex flex-row-reverse items-stretch gap-x-2 shrink-0'>
+      <Button padding='wide' {...primary}>
+        {primary?.label ?? primary.children}
+      </Button>
+      <DialogClose
+        render={
+          <Button
+            type={secondary.type ?? 'button'}
+            variant={'secondary'}
+            {...secondary}
+          >
+            {secondary.label ?? secondary.children}
+          </Button>
+        }
+      />
+    </div>
+  );
+}

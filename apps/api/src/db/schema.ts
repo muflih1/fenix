@@ -74,7 +74,22 @@ export const jobsTable = pgTable('jobs', {
     .notNull()
     .references(() => customersTable.id),
   title: text().notNull(),
-  stage: text().default('QUOTATION'),
+  stage: text({
+    enum: [
+      'QUOTATION',
+      'APPROVED',
+      'REJECTED',
+      'DESIGNING',
+      'MANUFACTURING',
+      'REVIEWING',
+      'INSTALLING',
+      'COMPLETED',
+    ],
+  }).default('QUOTATION'),
+  rejectedReason: text('rejected_reason'),
+  quoteAmount: text('quote_amount').notNull(),
+  location: text().notNull(),
+  priority: text().default('NORMAL'),
   createdAt: timestamp('created_at', {withTimezone: true})
     .notNull()
     .defaultNow(),

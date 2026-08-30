@@ -12,6 +12,7 @@ export const customerRouter = router({
     )
     .mutation(async ({input}) => {
       const customer = await CustomerService.createCustomer(input);
-      return customer
+      return customer;
     }),
+  list: protectedProcedure.query(() => CustomerService.getCustomers()),
 });

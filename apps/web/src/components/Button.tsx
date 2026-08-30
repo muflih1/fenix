@@ -1,21 +1,18 @@
 import {
-  Button as AriaButton,
-  type ButtonProps as AriaButtonProps,
-  Link as AriaLink,
-  type LinkProps as AriaLinkProps,
-} from 'react-aria-components';
+  Button as BaseButton,
+  type ButtonProps as BaseButtonProps,
+} from '@base-ui/react/button';
 import {cva, type VariantProps} from 'class-variance-authority';
-import {cn, composeTailwindRenderProps} from '../lib/utils';
-import {createLink} from '@tanstack/react-router';
+import {cn, composeRenderProps} from '../lib/utils';
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-none outline-none bg-clip-padding text-sm font-medium whitespace-nowrap transition-[background-color,color,transform,scale] select-none data-focus-visible:shadow-(--focus-ring-shadow-default) data-pressed:not-aria-[haspopup]:scale-98 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 not-disabled:cursor-pointer relative",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-none outline-none bg-clip-padding text-sm font-medium whitespace-nowrap transition-colors select-none focus-visible:shadow-(--focus-ring-shadow-default) active:not-aria-[haspopup]:scale-98 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 not-disabled:cursor-pointer relative",
   {
     variants: {
       variant: {
         default: 'bg-primary text-primary-foreground hover:bg-primary/80',
         outline:
-          'border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
+          'border-(--divider) border-solid bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
         secondary:
           'bg-(--secondary-button-surface) text-(--secondary-button-foreground) hover:bg-[color-mix(in_oklch,var(--secondary-button-surface),var(--primary)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground',
         ghost:
@@ -45,47 +42,22 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends Omit<AriaButtonProps, 'render'>, VariantProps<typeof buttonVariants> {
-  padding?: 'default' | 'wide';
+  extends BaseButtonProps, VariantProps<typeof buttonVariants> {
+  padding?: 'wide' | 'default';
 }
 
 export function Button({
   className,
   variant = 'default',
   size = 'default',
-  isDisabled = false,
   padding = 'default',
-  children,
   ...props
 }: ButtonProps) {
   return (
-    <AriaButton
-      isDisabled={isDisabled}
-      className={cn(
-        buttonVariants({className, size, variant}),
-        padding === 'wide' && 'px-10',
-      )}
-      {...props}
-    >
-      {children}
-    </AriaButton>
-  );
-}
-
-function LinkButtonImpl({
-  className,
-  variant = 'default',
-  size = 'default',
-  padding = 'default',
-  ...props
-}: AriaLinkProps &
-  VariantProps<typeof buttonVariants> & {padding?: 'default' | 'wide'}) {
-  return (
-    <AriaLink
-      className={composeTailwindRenderProps(
-        className,
+    <BaseButton
+      className={composeRenderProps(className, className =>
         cn(
-          buttonVariants({variant, size, className}),
+          buttonVariants({className, size, variant}),
           padding === 'wide' && 'px-10',
         ),
       )}
@@ -94,4 +66,6 @@ function LinkButtonImpl({
   );
 }
 
-export const LinkButton = createLink(LinkButtonImpl);
+export namespace Button {
+  export type Props = ButtonProps;
+}

@@ -7,8 +7,12 @@ export function cn(...inputs: Array<ClassValue>) {
 }
 
 export function composeTailwindRenderProps<T>(
-  className: string | ((v: T) => string) | undefined,
+  className: string | ((v: T) => string | undefined) | undefined,
   tw: string,
 ) {
   return composeRenderProps(className, className => cn(tw, className));
+}
+
+export {
+  composeRenderProps
 }

@@ -58,7 +58,7 @@ export function ToastRegion() {
           </ToastContent>
           <div className='p-1.5 flex flex-col'>
             <Button
-              slot='close'
+              onClick={toast.onClose}
               aria-label='Close'
               variant='secondary'
               size='icon-xs'

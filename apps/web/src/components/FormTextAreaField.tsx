@@ -1,16 +1,20 @@
 import {type FieldPath, type FieldValues} from 'react-hook-form';
 import {
-  HookFormFieldWrapper,
-  type HookFormFieldWrapperPropsWithoutChildren,
-} from './HookFormFieldWrapper';
+  FormFieldWrapper,
+  type FormFieldWrapperPropsWithoutChildren,
+} from './FormFieldWrapper';
 import {TextArea} from './TextArea';
+import {cn} from '../lib/utils';
 
-interface HookFormTextAreaFieldProps<
+interface FormTextAreaFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> extends HookFormFieldWrapperPropsWithoutChildren<TFieldValues, TName> {}
+> extends FormFieldWrapperPropsWithoutChildren<TFieldValues, TName> {
+  placeholder?: string;
+  className?: string;
+}
 
-export function HookFormTextAreaField<
+export function FormTextAreaField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
@@ -19,9 +23,11 @@ export function HookFormTextAreaField<
   disabled,
   defaultValue,
   label,
-}: HookFormTextAreaFieldProps<TFieldValues, TName>) {
+  placeholder,
+  className,
+}: FormTextAreaFieldProps<TFieldValues, TName>) {
   return (
-    <HookFormFieldWrapper
+    <FormFieldWrapper
       label={label}
       disabled={disabled}
       defaultValue={defaultValue}
@@ -31,7 +37,11 @@ export function HookFormTextAreaField<
       {({id, errorId, field, fieldState}) => (
         <TextArea
           id={id}
-          className='w-full aria-invalid:border-negative aria-invalid:data-focused:shadow-[0_0_0_2px_var(--always-white),0_0_0_4px_var(--negative)]'
+          className={cn(
+            'w-full aria-invalid:border-negative aria-invalid:focus:shadow-[0_0_0_2px_var(--always-white),0_0_0_4px_var(--negative)]',
+            className,
+          )}
+          placeholder={placeholder}
           {...field}
           {...(fieldState.invalid &&
             fieldState.error?.message != null && {
@@ -40,6 +50,6 @@ export function HookFormTextAreaField<
             })}
         />
       )}
-    </HookFormFieldWrapper>
+    </FormFieldWrapper>
   );
 }

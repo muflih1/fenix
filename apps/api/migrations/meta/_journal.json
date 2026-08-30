@@ -15,6 +15,20 @@
       "when": 1787743129187,
       "tag": "0001_regular_red_wolf",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788087156074,
+      "tag": "0002_broken_smasher",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1788092406559,
+      "tag": "0003_omniscient_the_spike",
+      "breakpoints": true
     }
   ]
 }
