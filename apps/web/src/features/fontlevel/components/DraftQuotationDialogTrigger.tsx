@@ -8,7 +8,7 @@ export function DraftQuotationDialogTrigger() {
 
   return (
     <DialogRoot open={isOpen} onOpenChange={setOpen}>
-      <DialogTrigger render={<Button />}>Create quotation</DialogTrigger>
+      <DialogTrigger render={<Button />}>Draft quotation</DialogTrigger>
       <CreateJobDialog
         onSuccess={() => {
           setOpen(false);

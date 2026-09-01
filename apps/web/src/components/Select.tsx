@@ -47,7 +47,7 @@ export function Select<Value, Multiple extends boolean | undefined = false>({
         ref={ref}
         className={composeTailwindRenderProps(
           triggerClassName,
-          'flex items-center text-start gap-4 w-full border border-gray-200 cursor-default rounded-(--input-corner-radius) pl-3 pr-2 h-9 bg-transparent [-webkit-tap-highlight-color:transparent] outline-none focus:shadow-(--focus-ring-shadow-default)',
+          'flex items-center text-start gap-4 w-full border border-(--input-border-color) cursor-default rounded-(--input-corner-radius) pl-3 pr-2 h-9 bg-transparent [-webkit-tap-highlight-color:transparent] outline-none focus:shadow-(--focus-ring-shadow-default)',
         )}
       >
         <BaseSelect.Value

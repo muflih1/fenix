@@ -1,23 +1,13 @@
 import 'dotenv/config';
-import bcrypt from 'bcryptjs';
-import {db} from './index.js';
-import {usersTable} from './schema.js';
+import {UserService} from '../services/index.js';
 
 async function seedManager() {
-  const salt = await bcrypt.genSalt(12);
-  const digest = await bcrypt.hash(
-    process.env.MANAGER_PASSWORD as string,
-    salt,
-  );
-  await db
-    .insert(usersTable)
-    .values({
-      name: 'Manager',
-      email: process.env.MANAGER_EMAIL as string,
-      passwordDigest: digest,
-      role: 'MANAGER',
-    })
-    .onConflictDoNothing({target: usersTable.email});
+  await UserService.createEmployee({
+    name: 'Manager',
+    email: process.env.MANAGER_EMAIL as string,
+    password: process.env.MANAGER_PASSWORD as string,
+    role: 'MANAGER',
+  });
 }
 
 async function bootstrap() {

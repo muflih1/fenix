@@ -4,6 +4,8 @@ import {useTRPC} from '../../../utils/trpc';
 import {useQuery} from '@tanstack/react-query';
 import {Skeleton} from '../../../components/Skeleton';
 import {formatEmployeeRole} from '../lib/formatter';
+import {AvatarFallback} from '../../../components/Avatar';
+import { CreateEmployeeDialogTrigger } from './CreateEmployeeDialogTrigger';
 
 export function EmployeeAttendanceRegisterCard() {
   const trpc = useTRPC();
@@ -18,6 +20,7 @@ export function EmployeeAttendanceRegisterCard() {
           <IconCalendarClock />
           <span>Employee Attendance Register</span>
         </h3>
+        <CreateEmployeeDialogTrigger />
       </div>
       <ul>
         {isLoading &&
@@ -43,8 +46,8 @@ export function EmployeeAttendanceRegisterCard() {
         {employees?.map(employee => (
           <li key={employee.id} className='group/item'>
             <div className='group-last/item:border-b-0 border-b border-b-(--divider) flex items-center justify-center py-3.5'>
-              <div className='flex flex-row shrink grow min-w-0 space-y-0.75'>
-                <div></div>
+              <div className='flex flex-row shrink grow min-w-0 items-center space-x-2'>
+                <AvatarFallback>M</AvatarFallback>
                 <div className='flex flex-col'>
                   <span className='txet-sm font-bold'>{employee.name}</span>
                   <span className='text-xs font-medium text-secondary-foreground'>
@@ -52,9 +55,18 @@ export function EmployeeAttendanceRegisterCard() {
                   </span>
                 </div>
               </div>
-              <div className='shrink-0 ml-4 flex items-center self-stretch space-x-1'>
-                <Button>Present</Button>
-                <Button>Absent</Button>
+              <div className='shrink-0 ml-4 flex items-center self-stretch'>
+                <div className='flex bg-(--secondary-button-surface) rounded-3xl'>
+                  <Button
+                    variant='secondary'
+                    className='rounded-r-none relative after:absolute after:top-2 after:h-5 after:w-px after:bg-black/20 after:right-0'
+                  >
+                    Present
+                  </Button>
+                  <Button variant='secondary' className='rounded-l-none'>
+                    Absent
+                  </Button>
+                </div>
               </div>
             </div>
           </li>

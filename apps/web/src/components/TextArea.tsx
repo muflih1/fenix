@@ -8,7 +8,7 @@ export function TextArea({
   return (
     <textarea
       className={cn(
-        'field-sizing-content focus:shadow-(--focus-ring-shadow-default) rounded-(--input-corner-radius) border border-gray-200 p-2 text-sm cursor-text box-border relative z-0 resize-none min-h-16 outline-0',
+        'field-sizing-content focus:shadow-(--focus-ring-shadow-default) rounded-(--input-corner-radius) border border-(--input-border-color) p-2 text-sm cursor-text box-border relative z-0 resize-none min-h-16 outline-0',
         className,
       )}
       {...props}

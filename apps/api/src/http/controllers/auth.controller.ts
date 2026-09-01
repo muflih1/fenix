@@ -1,6 +1,9 @@
-import bcrypt from 'bcryptjs';
 import {UnauthorizedException} from '../../exceptions/index.js';
-import {SessionService, UserService} from '../../services/index.js';
+import {
+  PasswordService,
+  SessionService,
+  UserService,
+} from '../../services/index.js';
 import {catchAsync} from '../../utils/index.js';
 import {HttpStatus} from '../../enums/index.js';
 
@@ -11,7 +14,7 @@ export const loginHandler = catchAsync(async (req, res) => {
   const {email, password} = req.body;
   const user = await UserService.getUserByEmail(email);
   const digest = user?.passwordDigest ?? DUMMY_BCRYPT_DIGEST;
-  const valid = await bcrypt.compare(password, digest);
+  const valid = await PasswordService.comparePassword(password, digest);
   if (!user || !valid) throw new UnauthorizedException();
   const sessionWithToken = await SessionService.createSession(user.id);
   const {passwordDigest: _, ...safeUser} = user;

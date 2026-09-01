@@ -11,7 +11,7 @@ export function TextInput({className, ...props}: TextInputProps) {
     <BaseInput
       className={composeTailwindRenderProps(
         className,
-        'outline-none focus:shadow-(--focus-ring-shadow-default) rounded-(--input-corner-radius) border border-gray-200 h-9 p-2 text-sm cursor-text box-border relative z-0',
+        'outline-none focus:shadow-(--focus-ring-shadow-default) rounded-(--input-corner-radius) border border-(--input-border-color) h-9 p-2 text-sm cursor-text box-border relative z-0',
       )}
       {...props}
     />
